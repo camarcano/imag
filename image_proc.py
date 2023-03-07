@@ -5,10 +5,17 @@ import cv2
 if not os.path.exists('ext_imag'):
     os.mkdir('ext_imag')
 else:
-    # Get the last image filename in the 'ext_imag' directory
-    last_img_filename = sorted(os.listdir('ext_imag'))[-1]
-    last_img_index = int(last_img_filename.split('.')[0][3:])
-    img_index = last_img_index + 1
+    # Getting the list of directories
+    dir = os.listdir('ext_imag')
+  
+    # Checking if the list is empty or not
+    if len(dir) == 0:
+        img_index = 0
+    else:
+        # Get the last image filename in the 'ext_imag' directory
+        last_img_filename = sorted(os.listdir('ext_imag'))[-1]
+        last_img_index = int(last_img_filename.split('.')[0][3:])
+        img_index = last_img_index + 1
 
 # Define the video file extensions to search for
 video_extensions = ['.mp4', '.avi', '.mov']
